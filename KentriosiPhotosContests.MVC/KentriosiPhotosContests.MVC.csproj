@@ -257,13 +257,13 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KentriosiPhotoContest.Data\KentriosiPhotoContest.Data.csproj">
+    <ProjectReference Include="..\KentriosiPhotosContests.Data\KentriosiPhotosContests.Data.csproj">
       <Project>{780bd90a-ec24-4208-8549-a718df635c5e}</Project>
-      <Name>KentriosiPhotoContest.Data</Name>
+      <Name>KentriosiPhotosContests.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KentriosiPhotoContest.Models\KentriosiPhotoContest.Models.csproj">
+    <ProjectReference Include="..\KentriosiPhotosContests.Models\KentriosiPhotosContests.Models.csproj">
       <Project>{0d50ee5b-3fbb-45d5-9271-4d81867ce166}</Project>
-      <Name>KentriosiPhotoContest.Models</Name>
+      <Name>KentriosiPhotosContests.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

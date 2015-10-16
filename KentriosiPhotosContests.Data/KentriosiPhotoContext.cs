@@ -1,15 +1,15 @@
 namespace KentriosiPhotoContest.Data
 {
-    using System;
     using System.Data.Entity;
-    using System.Linq;
-    using KentriosiPhotoContest.Models;
+
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    public class KentriosiPhotoContext : IdentityDbContext<ApplicationUser>
+    using KentriosiPhotoContest.Models;
+
+    public class KentriosiPhotoContext : IdentityDbContext<User>
     {
         public KentriosiPhotoContext()
-            : base("KentriosiPhotoContext")
+            : base("KentriosiPhotosContest")
         {
         }
 
@@ -17,20 +17,17 @@ namespace KentriosiPhotoContest.Data
 
         public IDbSet<ContestStrategy> ContestStrategies { get; set; }
 
-        public IDbSet<DeadLineStrategy> DeadLineStrategies { get; set; }
-
         public IDbSet<Image> Images { get; set; }
 
         public IDbSet<Prize> Prizes { get; set; }
 
         public IDbSet<Vote> Votes { get; set; }
 
+        public IDbSet<Comment> Comments { get; set; }
+
         public static KentriosiPhotoContext Create()
         {
             return new KentriosiPhotoContext();
         }
-       
     }
-
-   
 }

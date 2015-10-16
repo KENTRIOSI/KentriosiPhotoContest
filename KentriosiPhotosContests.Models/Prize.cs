@@ -18,6 +18,6 @@ namespace KentriosiPhotoContest.Models
 
         public int WinnerId { get; set; }
 
-        public virtual ApplicationUser Winner { get; set; }
+        public virtual User Winner { get; set; }
     }
 }

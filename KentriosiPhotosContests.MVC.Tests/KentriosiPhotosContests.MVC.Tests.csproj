@@ -3,7 +3,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion></ProductVersion>
+    <ProductVersion>
+    </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{C518DC59-D111-4A98-AD34-57FB41919BBA}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -91,9 +92,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KentriosiPhotoContest.MVC\KentriosiPhotoContest.MVC.csproj">
+    <ProjectReference Include="..\KentriosiPhotosContests.MVC\KentriosiPhotosContests.MVC.csproj">
       <Project>{3BCD503E-FE31-454A-8391-55C1DD99F0BD}</Project>
-      <Name>KentriosiPhotoContest.MVC</Name>
+      <Name>KentriosiPhotosContests.MVC</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KentriosiPhotoContest.Models
+﻿namespace KentriosiPhotoContest.Models
 {
+    using System.Collections.Generic;
+
     public class Image
     {
         private ICollection<Vote> votes;
+        private ICollection<Comment> comments;
 
         public Image()
         {
             this.votes = new HashSet<Vote>();
+            this.comments = new HashSet<Comment>();
         }
 
         public int Id { get; set; }
@@ -27,17 +25,22 @@ namespace KentriosiPhotoContest.Models
 
         public string Path { get; set; }
 
-        public int OwnerId { get; set; }
+        public string OwnerId { get; set; }
 
-        public virtual ApplicationUser Owner { get; set; }
+        public virtual User Owner { get; set; }
 
-        public bool isDeleted { get; set; }
-        
+        public bool IsDeleted { get; set; }
+
         public virtual ICollection<Vote> Votes
         {
             get { return this.votes; }
             set { this.votes = value; }
         }
 
+        public virtual ICollection<Comment> Comments
+        {
+            get { return this.comments; }
+            set { this.comments = value; }
+        }
     }
 }

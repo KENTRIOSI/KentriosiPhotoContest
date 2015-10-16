@@ -14,7 +14,7 @@ namespace KentriosiPhotoContest.Models
 
         public int VoterId { get; set; }
 
-        public virtual ApplicationUser Voter { get; set; }
+        public virtual User Voter { get; set; }
 
         public int ImageId { get; set; }
 

@@ -1,26 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KentriosiPhotoContest.Models
+﻿namespace KentriosiPhotoContest.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
     public class Contest
     {
         private ICollection<Prize> prizes;
-        private ICollection<ApplicationUser> invitedvoters;
-        private ICollection<ApplicationUser> allowedparticipants;
-        private ICollection<ApplicationUser> winners;
+        private ICollection<User> invitedVoters;
+        private ICollection<User> allowedParticipants;
+        private ICollection<User> winners;
         private ICollection<Image> images;
 
         public Contest()
         {
             this.images = new HashSet<Image>();
             this.prizes = new HashSet<Prize>();
-            this.invitedvoters = new HashSet<ApplicationUser>();
-            this.winners = new HashSet<ApplicationUser>();
-            this.allowedparticipants = new HashSet<ApplicationUser>();
+            this.invitedVoters = new HashSet<User>();
+            this.winners = new HashSet<User>();
+            this.allowedParticipants = new HashSet<User>();
         }
 
         public int Id { get; set; }
@@ -29,7 +27,7 @@ namespace KentriosiPhotoContest.Models
 
         public string Description { get; set; }
 
-        public Status Status { get; set; }
+        public ContestStatus Status { get; set; }
 
         public string StatusDescription { get; set; }
 
@@ -39,13 +37,14 @@ namespace KentriosiPhotoContest.Models
 
         public int OwnerId { get; set; }
 
-        public virtual ApplicationUser Owner { get; set; }
+        public virtual User Owner { get; set; }
 
+        [Required]
         public DateTime DateCreated { get; set; }
 
-        public DateTime DateModified { get; set; }
+        public DateTime? DateModified { get; set; }
 
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
         public DateTime DeadLineDate { get; set; }
 
@@ -57,19 +56,19 @@ namespace KentriosiPhotoContest.Models
             set { this.prizes = value; }
         }
 
-        public virtual ICollection<ApplicationUser> InvitedVoters
+        public virtual ICollection<User> InvitedVoters
         {
-            get { return this.invitedvoters; }
-            set { this.invitedvoters = value; }
+            get { return this.invitedVoters; }
+            set { this.invitedVoters = value; }
         }
 
-        public virtual ICollection<ApplicationUser> AllowedParticipants
+        public virtual ICollection<User> AllowedParticipants
         {
-            get { return this.allowedparticipants; }
-            set { this.allowedparticipants = value; }
+            get { return this.allowedParticipants; }
+            set { this.allowedParticipants = value; }
         }
 
-        public virtual ICollection<ApplicationUser> Winners
+        public virtual ICollection<User> Winners
         {
             get { return this.winners; }
             set { this.winners = value; }
@@ -80,8 +79,5 @@ namespace KentriosiPhotoContest.Models
             get { return this.images; }
             set { this.images = value; }
         }
-
-
-
     }
 }
