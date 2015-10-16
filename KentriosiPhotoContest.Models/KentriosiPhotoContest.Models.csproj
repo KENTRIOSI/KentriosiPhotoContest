@@ -60,6 +60,7 @@
     <Compile Include="Image.cs" />
     <Compile Include="Prize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Status.cs" />
     <Compile Include="Vote.cs" />
   </ItemGroup>
   <ItemGroup>
