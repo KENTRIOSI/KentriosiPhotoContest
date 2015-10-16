@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KentriosiPhotoContest.MVC", "KentriosiPhotoContest.MVC\KentriosiPhotoContest.MVC.csproj", "{3BCD503E-FE31-454A-8391-55C1DD99F0BD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KentriosiPhotoContest.MVC.Tests", "KentriosiPhotoContest.MVC.Tests\KentriosiPhotoContest.MVC.Tests.csproj", "{C518DC59-D111-4A98-AD34-57FB41919BBA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KentriosiPhotoContest.Models", "KentriosiPhotoContest.Models\KentriosiPhotoContest.Models.csproj", "{0D50EE5B-3FBB-45D5-9271-4D81867CE166}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KentriosiPhotoContest.Data", "KentriosiPhotoContest.Data\KentriosiPhotoContest.Data.csproj", "{780BD90A-EC24-4208-8549-A718DF635C5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{0D50EE5B-3FBB-45D5-9271-4D81867CE166}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D50EE5B-3FBB-45D5-9271-4D81867CE166}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D50EE5B-3FBB-45D5-9271-4D81867CE166}.Release|Any CPU.Build.0 = Release|Any CPU
+		{780BD90A-EC24-4208-8549-A718DF635C5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{780BD90A-EC24-4208-8549-A718DF635C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{780BD90A-EC24-4208-8549-A718DF635C5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{780BD90A-EC24-4208-8549-A718DF635C5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
