@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using KentriosiPhotoContest.MVC.Models;
+using KentriosiPhotoContest.Models;
 
 namespace KentriosiPhotoContest.MVC
 {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KentriosiPhotoContest.Models
 {
-    class Vote
+    public class Vote
     {
         public int Id { get; set; }
 
@@ -15,7 +15,7 @@ namespace KentriosiPhotoContest.Models
         public int VoterId { get; set; }
 
         public virtual ApplicationUser Voter { get; set; }
-      
+
         public int ImageId { get; set; }
 
         public virtual Image Image { get; set; }

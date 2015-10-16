@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using KentriosiPhotoContest.MVC.Models;
+using KentriosiPhotoContest.Models;
 
 namespace KentriosiPhotoContest.MVC
 {
