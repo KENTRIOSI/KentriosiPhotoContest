@@ -10,21 +10,25 @@ namespace KentriosiPhotoContest.MVC.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using Data;
+    using Microsoft.AspNet.Identity;
+    using KentriosiPhotoContest.Models;
+    using Microsoft.AspNet.Identity.EntityFramework;
 
-    public static class NinjectWebCommon 
+    public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start() 
+        public static void Start()
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
-        
+
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -32,7 +36,7 @@ namespace KentriosiPhotoContest.MVC.App_Start
         {
             bootstrapper.ShutDown();
         }
-        
+
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
@@ -61,7 +65,10 @@ namespace KentriosiPhotoContest.MVC.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IKentriosiPhotoData>().To<KentriosiPhotoData>().WithConstructorArgument("context", new KentriosiPhotoContext());
+            kernel.Bind<IUserStore<User>>().To<UserStore<User>>().WithConstructorArgument("context", new KentriosiPhotoContext());
 
-        }        
+            // TODO: Add here more ninject bindings
+        }
     }
 }
