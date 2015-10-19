@@ -113,6 +113,10 @@
       <Project>{3BCD503E-FE31-454A-8391-55C1DD99F0BD}</Project>
       <Name>KentriosiPhotosContests.MVC</Name>
     </ProjectReference>
+    <ProjectReference Include="..\KentriosiPhotosContests.Services\KentriosiPhotosContests.Services.csproj">
+      <Project>{e38474eb-e3f5-4db0-9ecb-4001b7cfa763}</Project>
+      <Name>KentriosiPhotosContests.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

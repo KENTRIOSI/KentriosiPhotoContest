@@ -14,6 +14,8 @@ namespace KentriosiPhotoContest.MVC.App_Start
     using Microsoft.AspNet.Identity;
     using KentriosiPhotoContest.Models;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using KentriosiPhotosContests.Services.Contracts;
+    using KentriosiPhotosContests.Services;
 
     public static class NinjectWebCommon
     {
@@ -67,6 +69,10 @@ namespace KentriosiPhotoContest.MVC.App_Start
         {
             kernel.Bind<IKentriosiPhotoData>().To<KentriosiPhotoData>().WithConstructorArgument("context", new KentriosiPhotoContext());
             kernel.Bind<IUserStore<User>>().To<UserStore<User>>().WithConstructorArgument("context", new KentriosiPhotoContext());
+
+            kernel.Bind<IBaseService>().To<BaseService>().WithConstructorArgument("kentriosiPhotoData", new KentriosiPhotoData(new KentriosiPhotoContext()));
+            kernel.Bind<IHomeService>().To<HomeService>().WithConstructorArgument("kentriosiPhotoData", new KentriosiPhotoData(new KentriosiPhotoContext()));
+            kernel.Bind<IAccountService>().To<AccountService>().WithConstructorArgument("kentriosiPhotoData", new KentriosiPhotoData(new KentriosiPhotoContext()));
 
             // TODO: Add here more ninject bindings
         }

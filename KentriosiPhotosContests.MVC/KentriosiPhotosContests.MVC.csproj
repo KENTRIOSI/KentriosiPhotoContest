@@ -199,6 +199,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -290,6 +291,10 @@
     <ProjectReference Include="..\KentriosiPhotosContests.Models\KentriosiPhotosContests.Models.csproj">
       <Project>{0d50ee5b-3fbb-45d5-9271-4d81867ce166}</Project>
       <Name>KentriosiPhotosContests.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KentriosiPhotosContests.Services\KentriosiPhotosContests.Services.csproj">
+      <Project>{e38474eb-e3f5-4db0-9ecb-4001b7cfa763}</Project>
+      <Name>KentriosiPhotosContests.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

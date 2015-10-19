@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
-
-
-namespace KentriosiPhotoContest.MVC.Controllers
+﻿namespace KentriosiPhotoContest.MVC.Controllers
 {
-    public class HomeController : Controller
+    using System.Web.Mvc;
+    using KentriosiPhotosContests.Services.Contracts;
+
+    public class HomeController : BaseController
     {
+        public HomeController(IBaseService baseService)
+            : base(baseService)
+        {
+        }
+
         public ActionResult Index()
         {
             return View();
