@@ -13,6 +13,12 @@
         private DbContext context;
         private IDictionary<Type, object> repositories;
 
+        public KentriosiPhotoData(DbContext context)
+        {
+            this.context = context;
+            this.repositories = new Dictionary<Type, object>();
+        }
+
         public IKentriosiPhotoRepository<Comment> Comments
         {
             get
