@@ -40,7 +40,7 @@ namespace KentriosiPhotoContest.Data
                 .Map(m =>
                     m.MapLeftKey("UserId")
                     .MapRightKey("ContestId")
-                    .ToTable("ContestInvitations"));
+                    .ToTable("ContestsInvitations"));
 
             modelBuilder.Entity<User>()
                 .HasMany(u => u.ContestsParticipated)
@@ -48,7 +48,7 @@ namespace KentriosiPhotoContest.Data
                 .Map(m =>
                     m.MapLeftKey("UserId")
                     .MapRightKey("ContestId")
-                    .ToTable("ContestParticipants"));
+                    .ToTable("ContestsParticipants"));
 
             modelBuilder.Entity<User>()
                 .HasMany(u => u.ContestsWon)
@@ -56,7 +56,7 @@ namespace KentriosiPhotoContest.Data
                 .Map(m =>
                     m.MapLeftKey("UserId")
                     .MapRightKey("ContestId")
-                    .ToTable("ContestWinners"));
+                    .ToTable("ContestsWinners"));
             base.OnModelCreating(modelBuilder);
         }
     }
