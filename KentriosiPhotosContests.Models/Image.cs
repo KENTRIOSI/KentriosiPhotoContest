@@ -1,5 +1,6 @@
 ﻿namespace KentriosiPhotoContest.Models
 {
+    using System.ComponentModel.DataAnnotations;
     using System.Collections.Generic;
 
     public class Image
@@ -12,13 +13,14 @@
             this.votes = new HashSet<Vote>();
             this.comments = new HashSet<Comment>();
         }
-
+        [Key]
         public int Id { get; set; }
 
         public int ContestId { get; set; }
 
         public virtual Contest Contest { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         public string Description { get; set; }

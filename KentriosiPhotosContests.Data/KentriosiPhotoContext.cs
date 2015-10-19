@@ -4,13 +4,15 @@ namespace KentriosiPhotoContest.Data
 
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    using KentriosiPhotoContest.Models;
+    using Models;
+    using Migrations;
 
     public class KentriosiPhotoContext : IdentityDbContext<User>
     {
         public KentriosiPhotoContext()
-            : base("KentriosiPhotosContest")
+            : base("DefaultConnection")
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<KentriosiPhotoContext, Configuration>());
         }
 
         public IDbSet<Contest> Contests { get; set; }
@@ -28,6 +30,34 @@ namespace KentriosiPhotoContest.Data
         public static KentriosiPhotoContext Create()
         {
             return new KentriosiPhotoContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.ContestsInvitedIn)
+                .WithMany(u => u.InvitedVoters)
+                .Map(m =>
+                    m.MapLeftKey("UserId")
+                    .MapRightKey("ContestId")
+                    .ToTable("ContestInvitations"));
+
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.ContestsParticipated)
+                .WithMany(u => u.AllowedParticipants)
+                .Map(m =>
+                    m.MapLeftKey("UserId")
+                    .MapRightKey("ContestId")
+                    .ToTable("ContestParticipants"));
+
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.ContestsWon)
+                .WithMany(u => u.Winners)
+                .Map(m =>
+                    m.MapLeftKey("UserId")
+                    .MapRightKey("ContestId")
+                    .ToTable("ContestWinners"));
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

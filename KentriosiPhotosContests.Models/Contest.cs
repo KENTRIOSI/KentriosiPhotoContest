@@ -1,8 +1,12 @@
 ﻿namespace KentriosiPhotoContest.Models
 {
+
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+
+    using System.ComponentModel.DataAnnotations.Schema;
+    using Enums;
 
     public class Contest
     {
@@ -21,12 +25,34 @@
             this.allowedParticipants = new HashSet<User>();
         }
 
+        [InverseProperty("ContestsInvitedIn")]
+        public virtual ICollection<User> InvitedVoters
+        {
+            get { return this.invitedVoters; }
+            set { this.invitedVoters = value; }
+        }
+        [InverseProperty("ContestsParticipated")]
+        public virtual ICollection<User> AllowedParticipants
+        {
+            get { return this.allowedParticipants; }
+            set { this.allowedParticipants = value; }
+        }
+        [InverseProperty("ContestsWon")]
+        public virtual ICollection<User> Winners
+        {
+            get { return this.winners; }
+            set { this.winners = value; }
+        }
+
+        [Key]
         public int Id { get; set; }
 
+        [Required]
         public string Title { get; set; }
 
         public string Description { get; set; }
 
+        [Required]
         public ContestStatus Status { get; set; }
 
         public string StatusDescription { get; set; }
@@ -35,17 +61,17 @@
 
         public virtual ContestStrategy ContestStrategy { get; set; }
 
-        public int OwnerId { get; set; }
-
         public virtual User Owner { get; set; }
 
         [Required]
         public DateTime DateCreated { get; set; }
 
+        [DataType(DataType.DateTime)]
         public DateTime? DateModified { get; set; }
 
         public DateTime? EndDate { get; set; }
 
+        [DataType(DataType.DateTime)]
         public DateTime DeadLineDate { get; set; }
 
         public bool IsDeleted { get; set; }
@@ -54,24 +80,6 @@
         {
             get { return this.prizes; }
             set { this.prizes = value; }
-        }
-
-        public virtual ICollection<User> InvitedVoters
-        {
-            get { return this.invitedVoters; }
-            set { this.invitedVoters = value; }
-        }
-
-        public virtual ICollection<User> AllowedParticipants
-        {
-            get { return this.allowedParticipants; }
-            set { this.allowedParticipants = value; }
-        }
-
-        public virtual ICollection<User> Winners
-        {
-            get { return this.winners; }
-            set { this.winners = value; }
         }
 
         public virtual ICollection<Image> Images

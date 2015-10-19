@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KentriosiPhotoContest.Models
+﻿namespace KentriosiPhotoContest.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class Prize
     {
+        [Key]
         public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         public string Description { get; set; }
 
         public int WinnerPlace { get; set; }
 
-        public int WinnerId { get; set; }
-
-        public virtual User Winner { get; set; }
+        
     }
 }

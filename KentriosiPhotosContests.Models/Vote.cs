@@ -1,25 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KentriosiPhotoContest.Models
+﻿namespace KentriosiPhotoContest.Models
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
+
     public class Vote
     {
+        [Key]
         public int Id { get; set; }
 
+        [Required]
+        [RegularExpression(@"([0-9]+)", ErrorMessage = "Invalid vote !")]
+        [Range(0,10)]
         public int Value { get; set; }
 
-        public int VoterId { get; set; }
-
-        public virtual User Voter { get; set; }
+        public virtual User Owner { get; set; }
 
         public int ImageId { get; set; }
 
         public virtual Image Image { get; set; }
 
+        [DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
     }
 }

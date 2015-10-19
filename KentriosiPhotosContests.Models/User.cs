@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Security.Claims;
     using System.Threading.Tasks;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
@@ -11,8 +12,11 @@
     public class User : IdentityUser
     {
         private ICollection<Contest> contestsOwned;
+        private ICollection<Contest> contestsInvitedIn;
         private ICollection<Contest> contestsParticipated;
         private ICollection<Contest> contestsWon;
+
+
         private ICollection<Vote> votes;
         private ICollection<Image> images;
         private ICollection<Prize> prizesWon;
@@ -21,6 +25,7 @@
         public User()
         {
             this.contestsOwned = new HashSet<Contest>();
+            this.contestsInvitedIn = new HashSet<Contest>();
             this.contestsParticipated = new HashSet<Contest>();
             this.contestsWon = new HashSet<Contest>();
             this.votes = new HashSet<Vote>();
@@ -29,22 +34,29 @@
             this.comments = new HashSet<Comment>();
         }
 
+        public virtual ICollection<Contest> ContestsOwned
+        {
+            get { return this.contestsOwned; }
+            set { this.contestsOwned = value; }
+        }
+        [InverseProperty("InvitedVoters")]
+        public virtual ICollection<Contest> ContestsInvitedIn
+        {
+            get { return this.contestsWon; }
+            set { this.contestsWon = value; }
+        }
+        [InverseProperty("AllowedParticipants")]
         public virtual ICollection<Contest> ContestsParticipated
         {
             get { return this.contestsParticipated; }
             set { this.contestsParticipated = value; }
         }
-
+        
+        [InverseProperty("Winners")]
         public virtual ICollection<Contest> ContestsWon
         {
             get { return this.contestsWon; }
             set { this.contestsWon = value; }
-        }
-
-        public virtual ICollection<Contest> ContestsOwned
-        {
-            get { return this.contestsOwned; }
-            set { this.contestsOwned = value; }
         }
 
         public virtual ICollection<Vote> Votes
