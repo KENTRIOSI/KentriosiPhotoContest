@@ -1,19 +1,18 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using KentriosiPhotoContest.MVC.Models;
-using KentriosiPhotoContest.Models;
-using KentriosiPhotosContests.Services.Contracts;
-
-namespace KentriosiPhotoContest.MVC.Controllers
+﻿namespace KentriosiPhotoContest.MVC.Controllers
 {
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Mvc;
+
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+
+    using KentriosiPhotoContest.MVC.Models;
+    using KentriosiPhotoContest.Models;
+    using KentriosiPhotosContests.Services.Contracts;
+
     [Authorize]
     public class AccountController : BaseController
     {
