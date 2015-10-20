@@ -55,15 +55,15 @@ namespace KentriosiPhotoContest.MVC
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "896240043744817",
+               appSecret: "b51093741758200dde11ad1546dc7abd");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "657938122451-qp6e0kce2e7nsbb0iiav45jfhge26ir7.apps.googleusercontent.com",
+                ClientSecret = "-xWAYcmt-Ij6PPm5WZ_cS6VB"
+            });
         }
     }
 }
