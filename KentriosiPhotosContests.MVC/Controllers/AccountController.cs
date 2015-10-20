@@ -20,6 +20,11 @@ namespace KentriosiPhotoContest.MVC.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+        public AccountController(IBaseService baseService)
+            :base(baseService)
+        {
+        }
+
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IBaseService baseService)
             : base(baseService)
         {
