@@ -18,6 +18,11 @@
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+        public ManageController(IBaseService baseService)
+            : base(baseService)
+        {
+        }
+
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IBaseService baseService)
             : base(baseService)
         {

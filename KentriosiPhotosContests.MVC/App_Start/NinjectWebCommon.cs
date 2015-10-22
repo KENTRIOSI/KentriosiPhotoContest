@@ -6,16 +6,18 @@ namespace KentriosiPhotoContest.MVC.App_Start
     using System;
     using System.Web;
 
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
     using Ninject.Web.Common;
+
     using Data;
-    using Microsoft.AspNet.Identity;
     using KentriosiPhotoContest.Models;
-    using Microsoft.AspNet.Identity.EntityFramework;
     using KentriosiPhotosContests.Services.Contracts;
     using KentriosiPhotosContests.Services;
+    using KentriosiPhotosContests.Common;
 
     public static class NinjectWebCommon
     {
@@ -73,6 +75,11 @@ namespace KentriosiPhotoContest.MVC.App_Start
             kernel.Bind<IBaseService>().To<BaseService>().WithConstructorArgument("kentriosiPhotoData", new KentriosiPhotoData(new KentriosiPhotoContext()));
             kernel.Bind<IHomeService>().To<HomeService>().WithConstructorArgument("kentriosiPhotoData", new KentriosiPhotoData(new KentriosiPhotoContext()));
             kernel.Bind<IAccountService>().To<AccountService>().WithConstructorArgument("kentriosiPhotoData", new KentriosiPhotoData(new KentriosiPhotoContext()));
+
+
+            kernel.Bind<IMimeTypeManager>().To<MimeTypeManager>();
+            kernel.Bind<IAssemblyHelper>().To<AssemblyHelper>();
+            kernel.Bind<IRandomGenerator>().To<RandomGenerator>();
 
             // TODO: Add here more ninject bindings
         }

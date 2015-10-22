@@ -72,6 +72,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\KentriosiPhotosContests.Common\KentriosiPhotosContests.Common.csproj">
+      <Project>{7fb86dbf-8cd2-4476-b7e8-b55e4f6894e1}</Project>
+      <Name>KentriosiPhotosContests.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KentriosiPhotosContests.Models\KentriosiPhotosContests.Models.csproj">
       <Project>{0d50ee5b-3fbb-45d5-9271-4d81867ce166}</Project>
       <Name>KentriosiPhotosContests.Models</Name>
