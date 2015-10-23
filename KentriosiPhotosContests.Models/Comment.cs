@@ -9,9 +9,9 @@
         public int Id { get; set; }
 
         [Required]
+        [MaxLength(1000)]
         public string Content { get; set; }
 
-        [Required]
         public DateTime DateCreated { get; set; }
 
         public DateTime? DateModified { get; set; }
