@@ -12,10 +12,8 @@
 
         public DeadLine DeadlineStrategy { get; set; }
 
-        [Required]
         public bool IsOpenForAllContesters { get; set; }
 
-        [Required]
         public bool IsOpenForAllVoters { get; set; }
     }
 }

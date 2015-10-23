@@ -48,13 +48,16 @@
         public int Id { get; set; }
 
         [Required]
+        [MinLength(100)]
         public string Title { get; set; }
 
+        [MinLength(1000)]
         public string Description { get; set; }
 
         [Required]
         public ContestStatus Status { get; set; }
 
+        [MinLength(1000)]
         public string StatusDescription { get; set; }
 
         public int ContestStrategyId { get; set; }

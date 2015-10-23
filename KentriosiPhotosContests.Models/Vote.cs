@@ -10,8 +10,7 @@
         public int Id { get; set; }
 
         [Required]
-        [RegularExpression(@"([0-9]+)", ErrorMessage = "Invalid vote !")]
-        [Range(0,10)]
+        [Range(0,5)]
         public int Value { get; set; }
 
         public virtual User Owner { get; set; }

@@ -21,10 +21,13 @@
         public virtual Contest Contest { get; set; }
 
         [Required]
+        [MaxLength(100)]
         public string Name { get; set; }
 
+        [MaxLength(1000)]
         public string Description { get; set; }
 
+        [MaxLength(10000)]
         public string Path { get; set; }
 
         public string OwnerId { get; set; }
