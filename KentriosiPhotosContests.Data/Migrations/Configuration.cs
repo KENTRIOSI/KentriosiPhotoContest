@@ -20,6 +20,7 @@ namespace KentriosiPhotoContest.Data.Migrations
         {
             this.AutomaticMigrationsEnabled = true;
             this.AutomaticMigrationDataLossAllowed = false;
+            this.randomGenerator = new RandomGenerator();
         }
 
         protected override void Seed(KentriosiPhotoContext context)

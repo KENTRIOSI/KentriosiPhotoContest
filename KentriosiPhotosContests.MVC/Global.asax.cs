@@ -14,8 +14,8 @@
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<KentriosiPhotoContext, Configuration>());
-            //Database.SetInitializer(new DropCreateDatabaseAlways<KentriosiPhotoContext>());
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<KentriosiPhotoContext, Configuration>());
+            Database.SetInitializer(new DropCreateDatabaseAlways<KentriosiPhotoContext>());
 
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
