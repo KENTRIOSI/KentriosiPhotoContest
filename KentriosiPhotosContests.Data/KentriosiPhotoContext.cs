@@ -6,6 +6,7 @@ namespace KentriosiPhotoContest.Data
 
     using Models;
     using Migrations;
+    using System.Data.Entity.ModelConfiguration.Conventions;
 
     public class KentriosiPhotoContext : IdentityDbContext<User>
     {
@@ -35,6 +36,10 @@ namespace KentriosiPhotoContest.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+
             modelBuilder.Entity<User>()
                 .HasMany(u => u.ContestsInvitedIn)
                 .WithMany(u => u.InvitedVoters)

@@ -15,22 +15,83 @@ namespace KentriosiPhotoContest.Data.Migrations
     {
         private IRandomGenerator randomGenerator;
         private UserManager<User> userManager;
+        private RoleManager<IdentityRole> roleManager;
 
         public Configuration()
         {
             this.AutomaticMigrationsEnabled = true;
             this.AutomaticMigrationDataLossAllowed = false;
             this.randomGenerator = new RandomGenerator();
+
+        }
+
+        public void ExposedSeed()
+        {
+            this.Seed(new KentriosiPhotoContext());
         }
 
         protected override void Seed(KentriosiPhotoContext context)
         {
             this.userManager = new UserManager<User>(new UserStore<User>(context));
+            this.roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
             this.SeedPrizes(context);
             this.SeedContestStrategies(context);
             this.SeedUsers(context);
             this.SeedContests(context);
+            this.SeedImages(context);
+            this.SeedVotes(context);
+        }
+
+        private void SeedVotes(KentriosiPhotoContext context)
+        {
+            if (context.Votes.Any())
+            {
+                return;
+            }
+
+            var users = context.Users.ToList();
+            var images = context.Images.Where(i => i.Id < 10 && i.Id > 0).ToList();
+            for (int i = 0; i < 300; i++)
+            {
+                var vote = new Vote()
+                {
+                    Owner = users[this.randomGenerator.RandomNumber(0, users.Count() - 1)],
+                    Image = images[this.randomGenerator.RandomNumber(1, images.Count() - 1)],
+                    Value = this.randomGenerator.RandomNumber(0, 5),
+                    Date = DateTime.Now
+                };
+
+                context.Votes.AddOrUpdate(vote);
+            }
+
+            context.SaveChanges();
+        }
+
+        private void SeedImages(KentriosiPhotoContext context)
+        {
+            if (context.Images.Any())
+            {
+                return;
+            }
+
+            var users = context.Users.ToList();
+            var contests = context.Contests.ToList();
+            for (int i = 1; i < 100; i++)
+            {
+                var image = new Image()
+                {
+                    Name = this.randomGenerator.RandomString(2, 100),
+                    Contest = contests[this.randomGenerator.RandomNumber(0, contests.Count() - 1)],
+                    Description = this.randomGenerator.RandomString(0, 500),
+                    Owner = users[this.randomGenerator.RandomNumber(0, users.Count() - 1)],
+                    Path = "/",
+                    IsDeleted = this.randomGenerator.RandomNumber(0, 100) % 6 == 0
+                };
+                context.Images.AddOrUpdate(image);
+            }
+
+            context.SaveChanges();
         }
 
         private void SeedContests(KentriosiPhotoContext context)
@@ -74,13 +135,12 @@ namespace KentriosiPhotoContest.Data.Migrations
                     EndDate = endDate,
                     DeadLineDate = deadLineDate,
                     Description = this.randomGenerator.RandomString(2, 500),
-                    Title = this.randomGenerator.RandomString(2, 500),
+                    Title = this.randomGenerator.RandomString(2, 99),
                     StatusDescription = status == ContestStatus.Closed ? this.randomGenerator.RandomString(0, 250) : string.Empty,
                     IsDeleted = this.randomGenerator.RandomNumber(0, 100) % 6 == 0,
-                    Owner = users[this.randomGenerator.RandomNumber(0, users.Count - 1)],
-                    //Images
+                    Owner = users[this.randomGenerator.RandomNumber(0, users.Count - 1)]
                 };
-                context.Contests.Add(contest);
+                context.Contests.AddOrUpdate(contest);
             }
 
             context.SaveChanges();
@@ -101,7 +161,7 @@ namespace KentriosiPhotoContest.Data.Migrations
                     Description = this.randomGenerator.RandomString(10, 250),
                     WinnerPlace = this.randomGenerator.RandomNumber(1, 10)
                 };
-                context.Prizes.Add(prize);
+                context.Prizes.AddOrUpdate(prize);
             }
 
             context.SaveChanges();
@@ -123,7 +183,7 @@ namespace KentriosiPhotoContest.Data.Migrations
                     IsOpenForAllVoters = this.randomGenerator.RandomNumber(0, 100) % 2 == 0,
                     WinnersCount = this.randomGenerator.RandomNumber(0, 10)
                 };
-                context.ContestStrategies.Add(strategy);
+                context.ContestStrategies.AddOrUpdate(strategy);
             }
 
             context.SaveChanges();
@@ -143,11 +203,24 @@ namespace KentriosiPhotoContest.Data.Migrations
                     UserName = this.randomGenerator.RandomString(6, 50),
                     Email = string.Format("{0}@{1}.com", this.randomGenerator.RandomString(4, 25), this.randomGenerator.RandomString(4, 35))
                 };
-
                 userManager.Create(user, "123456");
             }
 
-            context.SaveChanges();
+            var adminUser = new User
+            {
+                UserName = "admin",
+                Email = "admin@admin.com"
+            };
+            userManager.Create(adminUser, "123456");
+            string adminRoleName = "Admin";
+            if (!this.roleManager.RoleExists("Admin"))
+            {
+                var adminRole = new IdentityRole();
+                adminRole.Name = adminRoleName;
+                this.roleManager.Create(adminRole);
+            }
+
+            userManager.AddToRole(adminUser.Id, adminRoleName);
         }
     }
 }

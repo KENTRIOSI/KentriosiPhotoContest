@@ -55,6 +55,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\KentriosiPhotosContests.Common\KentriosiPhotosContests.Common.csproj">
+      <Project>{7fb86dbf-8cd2-4476-b7e8-b55e4f6894e1}</Project>
+      <Name>KentriosiPhotosContests.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KentriosiPhotosContests.Data\KentriosiPhotosContests.Data.csproj">
       <Project>{780bd90a-ec24-4208-8549-a718df635c5e}</Project>
       <Name>KentriosiPhotosContests.Data</Name>

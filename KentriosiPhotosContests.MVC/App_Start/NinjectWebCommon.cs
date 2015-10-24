@@ -18,6 +18,7 @@ namespace KentriosiPhotoContest.MVC.App_Start
     using KentriosiPhotosContests.Services.Contracts;
     using KentriosiPhotosContests.Services;
     using KentriosiPhotosContests.Common;
+    using System.Configuration;
 
     public static class NinjectWebCommon
     {
@@ -75,11 +76,14 @@ namespace KentriosiPhotoContest.MVC.App_Start
             kernel.Bind<IBaseService>().To<BaseService>().WithConstructorArgument("kentriosiPhotoData", new KentriosiPhotoData(new KentriosiPhotoContext()));
             kernel.Bind<IHomeService>().To<HomeService>().WithConstructorArgument("kentriosiPhotoData", new KentriosiPhotoData(new KentriosiPhotoContext()));
             kernel.Bind<IAccountService>().To<AccountService>().WithConstructorArgument("kentriosiPhotoData", new KentriosiPhotoData(new KentriosiPhotoContext()));
-
-
+            
             kernel.Bind<IMimeTypeManager>().To<MimeTypeManager>();
             kernel.Bind<IAssemblyHelper>().To<AssemblyHelper>();
             kernel.Bind<IRandomGenerator>().To<RandomGenerator>();
+            kernel.Bind<IDropboxRepository>().To<DropnetRepository>()
+                .WithConstructorArgument("appKey", ConfigurationManager.AppSettings[KentriosiPhotoContest.MVC.Constants.DROPBOX_APIKEY])
+                .WithConstructorArgument("appSecret", ConfigurationManager.AppSettings[KentriosiPhotoContest.MVC.Constants.DROPBOX_APPSECRET]).
+                WithConstructorArgument("DropboxAccessToken", ConfigurationManager.AppSettings[KentriosiPhotoContest.MVC.Constants.DROPBOX_ACCESSTOKEN]);
 
             // TODO: Add here more ninject bindings
         }

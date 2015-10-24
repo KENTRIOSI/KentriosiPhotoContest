@@ -27,7 +27,7 @@
         [MaxLength(1000)]
         public string Description { get; set; }
 
-        [MaxLength(10000)]
+        [MaxLength(1000)]
         public string Path { get; set; }
 
         public string OwnerId { get; set; }

@@ -47,24 +47,31 @@
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        [MinLength(100)]
+        [Required(ErrorMessage = "Contest Title is required.", ErrorMessageResourceName = "Title")]
+        [MaxLength(100, ErrorMessageResourceName = "Title", ErrorMessage = "Contest title should be shorter than 100 chars.")]
         public string Title { get; set; }
 
-        [MinLength(1000)]
+        [MaxLength(1000)]
         public string Description { get; set; }
 
         [Required]
         public ContestStatus Status { get; set; }
 
-        [MinLength(1000)]
+        [MaxLength(1000)]
         public string StatusDescription { get; set; }
 
         public int ContestStrategyId { get; set; }
 
         public virtual ContestStrategy ContestStrategy { get; set; }
 
+        [Required]
+        public string OwnerId { get; set; }
+
         public virtual User Owner { get; set; }
+
+        public int? ContestImageId { get; set; }
+
+        public virtual Image ContestImage { get; set; }
 
         [Required]
         public DateTime DateCreated { get; set; }
@@ -75,7 +82,7 @@
         public DateTime? EndDate { get; set; }
 
         [DataType(DataType.DateTime)]
-        public DateTime DeadLineDate { get; set; }
+        public DateTime? DeadLineDate { get; set; }
 
         public bool IsDeleted { get; set; }
 
