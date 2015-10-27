@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="AssemblyHelper\AssemblyHelper.cs" />
     <Compile Include="AssemblyHelper\IAssemblyHelper.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="DropboxApi\DropnetRepository.cs" />
     <Compile Include="DropboxApi\IDropboxRepository.cs" />
     <Compile Include="MimeTypeMapping\IMimeTypeManager.cs" />

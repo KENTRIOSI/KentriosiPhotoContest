@@ -2,6 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Image
     {
@@ -13,12 +14,20 @@
             this.votes = new HashSet<Vote>();
             this.comments = new HashSet<Comment>();
         }
-        [Key]
+        [Key, ForeignKey("Contest")]
         public int Id { get; set; }
 
         public int ContestId { get; set; }
 
+        [ForeignKey("ContestId")]
+        [InverseProperty("ContestImage")]
         public virtual Contest Contest { get; set; }
+
+        public int AppertainingContestId { get; set; }
+
+        [ForeignKey("AppertainingContestId")]
+        [InverseProperty("Images")]
+        public virtual Contest AppertainingContest { get; set; }
 
         [Required]
         [MaxLength(100)]
@@ -35,6 +44,8 @@
         public virtual User Owner { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        public string Extension { get; set; }
 
         public virtual ICollection<Vote> Votes
         {

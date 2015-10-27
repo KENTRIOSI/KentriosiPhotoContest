@@ -1,0 +1,8 @@
+﻿@using KentriosiPhotoContest.MVC.Models
+@model ContestViewModel
+
+<article>
+    <h2>@Html.DisplayNameForModel()</h2>
+    <img src='@Url.Action("ById", "Images", new {id= @Model.ContestImageId })' alt="contest image" />
+
+</article>

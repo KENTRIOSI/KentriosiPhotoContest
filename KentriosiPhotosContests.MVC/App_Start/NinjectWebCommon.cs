@@ -76,7 +76,9 @@ namespace KentriosiPhotoContest.MVC.App_Start
             kernel.Bind<IBaseService>().To<BaseService>().WithConstructorArgument("kentriosiPhotoData", new KentriosiPhotoData(new KentriosiPhotoContext()));
             kernel.Bind<IHomeService>().To<HomeService>().WithConstructorArgument("kentriosiPhotoData", new KentriosiPhotoData(new KentriosiPhotoContext()));
             kernel.Bind<IAccountService>().To<AccountService>().WithConstructorArgument("kentriosiPhotoData", new KentriosiPhotoData(new KentriosiPhotoContext()));
-            
+            kernel.Bind<IImagesService>().To<ImagesService>().WithConstructorArgument("kentriosiPhotoData", new KentriosiPhotoData(new KentriosiPhotoContext()));
+            kernel.Bind<IContestService>().To<ContestService>().WithConstructorArgument("kentriosiPhotoData", new KentriosiPhotoData(new KentriosiPhotoContext()));
+
             kernel.Bind<IMimeTypeManager>().To<MimeTypeManager>();
             kernel.Bind<IAssemblyHelper>().To<AssemblyHelper>();
             kernel.Bind<IRandomGenerator>().To<RandomGenerator>();

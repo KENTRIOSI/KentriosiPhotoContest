@@ -1,0 +1,10 @@
+﻿@using KentriosiPhotoContest.MVC.Models
+@model IEnumerable<ContestViewModel>
+
+@foreach (ContestViewModel contest in @Model)
+{
+
+    <div class="contest row well-sm">
+        @Html.Partial("_Contest", contest)
+    </div>
+}

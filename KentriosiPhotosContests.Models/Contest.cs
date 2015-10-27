@@ -71,6 +71,8 @@
 
         public int? ContestImageId { get; set; }
 
+        [ForeignKey("ContestImageId")]
+        [InverseProperty("Contest")]
         public virtual Image ContestImage { get; set; }
 
         [Required]
@@ -92,6 +94,7 @@
             set { this.prizes = value; }
         }
 
+        [InverseProperty("AppertainingContest")]
         public virtual ICollection<Image> Images
         {
             get { return this.images; }

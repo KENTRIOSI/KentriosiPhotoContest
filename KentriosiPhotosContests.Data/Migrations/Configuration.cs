@@ -77,16 +77,19 @@ namespace KentriosiPhotoContest.Data.Migrations
 
             var users = context.Users.ToList();
             var contests = context.Contests.ToList();
+            var contest = contests[this.randomGenerator.RandomNumber(1, contests.Count() - 1)];
             for (int i = 1; i < 100; i++)
             {
                 var image = new Image()
                 {
                     Name = this.randomGenerator.RandomString(2, 100),
-                    Contest = contests[this.randomGenerator.RandomNumber(0, contests.Count() - 1)],
+                    Contest = contest,
+                    AppertainingContest = contest,
                     Description = this.randomGenerator.RandomString(0, 500),
                     Owner = users[this.randomGenerator.RandomNumber(0, users.Count() - 1)],
                     Path = "/",
-                    IsDeleted = this.randomGenerator.RandomNumber(0, 100) % 6 == 0
+                    IsDeleted = this.randomGenerator.RandomNumber(0, 100) % 6 == 0,
+                    Extension = "jpg"
                 };
                 context.Images.AddOrUpdate(image);
             }
