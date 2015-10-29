@@ -40,7 +40,7 @@ namespace KentriosiPhotoContest.MVC
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/constests").Include(
-                "~Scripts/constests.js"
+                "~/Scripts/constests.js"
                 ));
         }
     }
