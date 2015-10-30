@@ -1,3 +1,5 @@
+using System.Web.ApplicationServices;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(KentriosiPhotoContest.MVC.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(KentriosiPhotoContest.MVC.App_Start.NinjectWebCommon), "Stop")]
 
@@ -78,6 +80,7 @@ namespace KentriosiPhotoContest.MVC.App_Start
             kernel.Bind<IAccountService>().To<AccountService>().WithConstructorArgument("kentriosiPhotoData", new KentriosiPhotoData(new KentriosiPhotoContext()));
             kernel.Bind<IImagesService>().To<ImagesService>().WithConstructorArgument("kentriosiPhotoData", new KentriosiPhotoData(new KentriosiPhotoContext()));
             kernel.Bind<IContestService>().To<ContestService>().WithConstructorArgument("kentriosiPhotoData", new KentriosiPhotoData(new KentriosiPhotoContext()));
+            kernel.Bind<IProfileService>().To<ProfileService>().WithConstructorArgument("kentriosiPhotoData", new KentriosiPhotoData(new KentriosiPhotoContext()));
 
             kernel.Bind<IMimeTypeManager>().To<MimeTypeManager>();
             kernel.Bind<IAssemblyHelper>().To<AssemblyHelper>();
