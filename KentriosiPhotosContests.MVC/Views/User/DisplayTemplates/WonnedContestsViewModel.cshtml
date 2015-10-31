@@ -1,0 +1,11 @@
+﻿@model KentriosiPhotoContest.MVC.Models.ViewModels.Contest.WonnedContestsViewModel
+
+<div class="container user-contests-container">
+    <h3>
+        Title : <a href="@Url.Action("Details", "Contest", new {Id = Model.Id})">@Model.Title</a>
+    </h3>
+    <h4>Description: @Model.Description</h4>
+    <h5><b>Created on:</b> @Model.DateCreated</h5>
+    <h5><b>End date: </b> @Model.EndDate</h5>
+</div>
+
