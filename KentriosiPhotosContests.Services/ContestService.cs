@@ -23,5 +23,10 @@
                 .Take(contestPageSize);
             return pagedPublicContests;
         }
+
+        public Contest returnContest(int id)
+        {
+            return this.Data.Contests.Find(id);
+        }
     }
 }

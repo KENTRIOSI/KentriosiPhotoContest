@@ -10,5 +10,6 @@
     public interface IContestService
     {
         IEnumerable<Contest> GetPagedPublicContests(int contestPageSize, int page);
+        Contest returnContest(int id);
     }
 }

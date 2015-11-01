@@ -35,12 +35,13 @@ namespace KentriosiPhotoContest.Data.Migrations
             this.userManager = new UserManager<User>(new UserStore<User>(context));
             this.roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
-            this.SeedPrizes(context);
-            this.SeedContestStrategies(context);
+            this.SeedContestStrategies(context);        
             this.SeedUsers(context);
             this.SeedContests(context);
             this.SeedImages(context);
+            this.SeedPrizes(context);
             this.SeedVotes(context);
+
         }
 
         private void SeedVotes(KentriosiPhotoContext context)

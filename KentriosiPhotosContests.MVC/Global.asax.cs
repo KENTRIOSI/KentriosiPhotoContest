@@ -14,10 +14,10 @@
     {
         protected void Application_Start()
         {
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<KentriosiPhotoContext, Configuration>());
-            //Database.SetInitializer(new DropCreateDatabaseAlways<KentriosiPhotoContext>());
-            //var configuration = new KentriosiPhotoContest.Data.Migrations.Configuration();
-            //configuration.ExposedSeed();
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<KentriosiPhotoContext, Configuration>());
+            Database.SetInitializer(new DropCreateDatabaseAlways<KentriosiPhotoContext>());
+            var configuration = new KentriosiPhotoContest.Data.Migrations.Configuration();
+            configuration.ExposedSeed();
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

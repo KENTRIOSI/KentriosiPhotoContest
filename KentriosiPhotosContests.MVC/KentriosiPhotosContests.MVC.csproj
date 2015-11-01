@@ -201,6 +201,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ContestController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -289,6 +290,7 @@
     <Content Include="Views\User\DisplayTemplates\OwnedContestViewModel.cshtml" />
     <Content Include="Views\User\DisplayTemplates\ActiveContestsViewModel.cshtml" />
     <Content Include="Views\User\DisplayTemplates\WonnedContestsViewModel.cshtml" />
+    <Content Include="Views\Contest\View.cshtml" />
     <None Include="Views\User\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
