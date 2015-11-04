@@ -9,6 +9,7 @@ using KentriosiPhotoContest.Models;
 using KentriosiPhotoContest.MVC.Models.ViewModels;
 using KentriosiPhotoContest.MVC.Models.ViewModels.Profile;
 using KentriosiPhotosContests.Services.Contracts;
+using Microsoft.AspNet.Identity;
 
 namespace KentriosiPhotoContest.MVC.Controllers
 {
@@ -23,13 +24,19 @@ namespace KentriosiPhotoContest.MVC.Controllers
             this.profileService = profileService;
         }
 
-        public ActionResult Profile(string username)
+        public ActionResult Profile()
         {
-            //var userProfile = this.profileService.GetAllUsers().Select(ProfileViewModel.Create);
 
-            var user = this.accountService.GetCurrentApplicationUser();
-            Mapper.CreateMap<User, ProfileViewModel>();
-            var userProfile = Mapper.Map<ProfileViewModel>(user);
+            var currentUserId = this.User.Identity.GetUserId();
+
+            var userProfile = this.profileService.GetAllUsers()
+                .Where(u=>u.Id==currentUserId)
+                .Select(ProfileViewModel.Create)
+                .FirstOrDefault();
+
+            //var user = this.accountService.GetCurrentApplicationUser();
+            //Mapper.CreateMap<User,ProfileViewModel>();
+            //var userProfile = Mapper.Map<ProfileViewModel>(user);
 
             return View(userProfile);
         }

@@ -13,8 +13,8 @@ namespace KentriosiPhotoContest.Data
         public KentriosiPhotoContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-            //// Database.SetInitializer(new MigrateDatabaseToLatestVersion<KentriosiPhotoContext, Configuration>());
-            //Database.SetInitializer(new DropCreateDatabaseAlways<KentriosiPhotoContext>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<KentriosiPhotoContext, Configuration>());
+            Database.SetInitializer(new DropCreateDatabaseAlways<KentriosiPhotoContext>());
         }
 
         public IDbSet<Contest> Contests { get; set; }

@@ -1,0 +1,69 @@
+﻿.user-page-container {
+    background-color: #E1E8ED;
+    margin: 15px;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.profile-data-container {
+    background-color: white;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 5px;
+}
+
+.create-new-contest-button {
+    padding-top: 10px;
+    margin: 20px;
+    font-weight: bold;
+}
+.contests-small-detail-block {
+    top: -15px;
+    background-color: white;
+    padding-top: 1%;
+    margin-left: 2%;
+    margin-bottom: 20px;
+    min-height: 40px;
+    margin-top:8%;
+    display: block;
+    border-radius: 5px;
+    padding-bottom: 1%;
+}
+
+.contests-info {
+    display: inline-block;
+    margin: 18px;
+    height: 30px;
+    text-align: center;
+    display: block;
+    min-width: 90%;
+    max-width: 90%;
+    width: 280px;
+    padding: 5px;
+}
+
+.contests-details {
+    background-color: #E1E8ED;
+    margin: 15px;
+    height: 100%;
+    border-radius: 5px;
+}
+.contests-hidden-default {
+    display: none;
+    
+}
+.user-contests-container {
+    padding-left: 20px;
+    padding-bottom: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    
+    background-color: white;
+    word-wrap: break-word;
+}
+.contests-headline {
+    text-align: center;
+}
+.owner-contest-btns {
+    margin-right: 10px;
+}

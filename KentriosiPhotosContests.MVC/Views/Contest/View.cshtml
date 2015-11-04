@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+@model KentriosiPhotoContest.Models.Contest
+@using KentriosiPhotoContest.Models.Enums;
+<div>
+    Contest:     @Model.Title<br />
+    Description: @Model.Description<br />
+    AllowedToVoteByEveryone: @Model.ContestStrategy.IsOpenForAllVoters
+    @{
+        if (Model.ContestStrategy.IsOpenForAllVoters == false)
+        {
+            <select>
+                @{foreach (var item in Model.InvitedVoters)
+                    {
+                        <option>@item.UserName</option>
+                    }
+                }
+            </select>
+                    }
+    }<br />
+    Public Join: @Model.ContestStrategy.IsOpenForAllContesters
+    @{
+        if (Model.ContestStrategy.IsOpenForAllContesters == false)
+        {
+            <select>
+                @{foreach (var item in Model.AllowedParticipants)
+                    {
+                        <option>@item.UserName</option>
+                    }
+                }
+            </select>
+
+                    }
+    }<br />
+    Winners: @Model.ContestStrategy.WinnersCount<br />
+    Status: @Model.Status<br />
+
+
+    @{
+        if (Model.ContestStrategy.IsOpenForAllContesters == true && Model.Status == ContestStatus.Open)
+        {
+            <input type="submit" name="Join" value="Join Contest" />
+        }
+        else
+        {
+            if (Model.Status == ContestStatus.Closed)
+            {
+                <input type="submit" value="Contest Closed" disabled />
+            }
+            else
+            {
+                <input type="submit" value="Private Contest" disabled />
+            }
+        }
+    }
+</div>
+
+Contests images
+@ViewBag.VotersCount<br />
+@ViewBag.ContestersCount
+@ViewBag.Count

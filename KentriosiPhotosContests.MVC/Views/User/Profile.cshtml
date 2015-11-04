@@ -1,9 +1,78 @@
 ﻿@model KentriosiPhotoContest.MVC.Models.ViewModels.Profile.ProfileViewModel
 
 @{
-    ViewBag.Title = "User profile";
+    ViewBag.Title = "User profile page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="user-page-container container">
+    <div class="profile-data-container col-md-4">
+        <h4>User info: </h4>
+        <img src="../" alt="profile-picture"/>
+        <h4>Username: @Model.ProfileInfo.UserName</h4>
+        <h4>Email: @Model.ProfileInfo.Email</h4>
+        <h5><b>Registered on:</b> @Model.ProfileInfo.RegisteredOn</h5>
+        <hr/>
+        <h4>Statistics: </h4>
+        <h5><b>Number of active contests:</b>@Model.ActiveContests.Count()</h5>
+        <h5><b>Number of wonned contests:</b>@Model.WonnedContests.Count()</h5>
+        <h5><b>Number of owned contests:</b>@Model.OwnedContensts.Count()</h5>
 
-<h2>User profile</h2>
-<h3>@Model.UserName</h3>
+    </div>
+
+@Html.ActionLink("Create new contest", "Create", "Contests", new {id = @Model.ProfileInfo.Id}, new {@class = "create-new-contest-button col-md-6 container btn btn-info"})
+
+    <div class="contests-small-detail-block col-md-6">
+        <input type="button" class="contests-info col-md-12 btn btn-info" value="View all owned contests" onclick="$('#owned-contests').toggle();"></input>
+        <input type="button" class="contests-info col-md-12 btn btn-info" value="View all active contests" onclick="$('#active-contests').toggle();"></input>
+        <input type="button" class="contests-info col-md-12 btn btn-info" value="View all wonned contests" onclick="$('#wonned-contests').toggle();"></input>
+    </div>
+</div>
+
+<div class="contests-details container">
+    <div id="owned-contests" class="contests-hidden-default">
+        @{
+            if (Model.OwnedContensts.Any())
+            {
+                <h3 class="contests-headline">Owned contests</h3>
+                @Html.DisplayFor(x => x.OwnedContensts)
+            }
+            else
+            {
+                <h3 class="contests-headline">No owned contests were found</h3>
+            }
+        }
+    </div>
+</div>
+
+<div class="contests-details container">
+    <div id="active-contests" class="contests-hidden-default">
+        @{
+            if (Model.ActiveContests.Any())
+            {
+                <h3 class="contests-headline">Active contests</h3>
+                @Html.DisplayFor(x => x.ActiveContests)
+            }
+            else
+            {
+                <h3 class="contests-headline">No active contests were found</h3>
+            }
+        }
+    </div>
+</div>
+
+<div class="contests-details container">
+    <div id="wonned-contests" class="contests-hidden-default">
+        @{
+            if (Model.WonnedContests.Any())
+            {
+                <h3 class="contests-headline">Wonned contests</h3>
+                @Html.DisplayFor(x => x.WonnedContests)
+            }
+            else
+            {
+                <h3 class="contests-headline">No wonned contests were found</h3>
+            }
+        }
+    </div>
+</div>
+
