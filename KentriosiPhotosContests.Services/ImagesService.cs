@@ -26,8 +26,10 @@
             Image contestImage = this.Data.Images.Find(id);
             if (null != contestImage)
             {
-                string imagePath = Path.Combine(Constants.DROPBOX_BASE_PATH, contestImage.Id.ToString(), ".", contestImage.Extension);
-                contestImage.Path = this.dropboxRepository.Download(imagePath);
+                string imagePath = Constants.DROPBOX_BASE_PATH + contestImage.Id.ToString() + "." + contestImage.Extension;
+
+                contestImage = this.dropboxRepository.Download(imagePath);
+
             }
 
             return contestImage;

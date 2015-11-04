@@ -1,5 +1,6 @@
 ﻿namespace KentriosiPhotosContests.Common
 {
+    using KentriosiPhotoContest.Models;
     using System;
     using System.Collections.Generic;
     using System.IO;
@@ -11,6 +12,6 @@
     {
         string Upload(int imageId, string fileName, Stream fileStream);
 
-        string Download(string path);
+        Image Download(string path);
     }
 }

@@ -14,34 +14,15 @@
         private ICollection<User> invitedVoters;
         private ICollection<User> allowedParticipants;
         private ICollection<User> winners;
-        private ICollection<Image> images;
+        private ICollection<Image> contestingImages;
 
         public Contest()
         {
-            this.images = new HashSet<Image>();
+            this.contestingImages = new HashSet<Image>();
             this.prizes = new HashSet<Prize>();
             this.invitedVoters = new HashSet<User>();
             this.winners = new HashSet<User>();
             this.allowedParticipants = new HashSet<User>();
-        }
-
-        [InverseProperty("ContestsInvitedIn")]
-        public virtual ICollection<User> InvitedVoters
-        {
-            get { return this.invitedVoters; }
-            set { this.invitedVoters = value; }
-        }
-        [InverseProperty("ContestsParticipated")]
-        public virtual ICollection<User> AllowedParticipants
-        {
-            get { return this.allowedParticipants; }
-            set { this.allowedParticipants = value; }
-        }
-        [InverseProperty("ContestsWon")]
-        public virtual ICollection<User> Winners
-        {
-            get { return this.winners; }
-            set { this.winners = value; }
         }
 
         [Key]
@@ -69,11 +50,9 @@
 
         public virtual User Owner { get; set; }
 
-        public int? ContestImageId { get; set; }
+        public int? ContestProfileImageId { get; set; }
 
-        [ForeignKey("ContestImageId")]
-        [InverseProperty("Contest")]
-        public virtual Image ContestImage { get; set; }
+        public virtual Image ContestProfileImage { get; set; }
 
         [Required]
         public DateTime DateCreated { get; set; }
@@ -95,10 +74,31 @@
         }
 
         [InverseProperty("AppertainingContest")]
-        public virtual ICollection<Image> Images
+        public virtual ICollection<Image> ContestingImages
         {
-            get { return this.images; }
-            set { this.images = value; }
+            get { return this.contestingImages; }
+            set { this.contestingImages = value; }
+        }
+
+        [InverseProperty("ContestsInvitedIn")]
+        public virtual ICollection<User> InvitedVoters
+        {
+            get { return this.invitedVoters; }
+            set { this.invitedVoters = value; }
+        }
+
+        [InverseProperty("ContestsParticipated")]
+        public virtual ICollection<User> AllowedParticipants
+        {
+            get { return this.allowedParticipants; }
+            set { this.allowedParticipants = value; }
+        }
+
+        [InverseProperty("ContestsWon")]
+        public virtual ICollection<User> Winners
+        {
+            get { return this.winners; }
+            set { this.winners = value; }
         }
     }
 }

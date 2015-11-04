@@ -38,12 +38,9 @@
                 return PartialView("_Contests", pagedContestsViewModel);
             }
 
-            pagedContestsViewModel = this.contestService
-                    .GetPagedPublicContests(Constants.CONTESTS_PAGE_SIZE, 1)
-                    .AsQueryable<Contest>()
-                    .Project()
-                    .To<ContestViewModel>();
-
+            IEnumerable<Contest> pagedContests = this.contestService
+                    .GetPagedPublicContests(Constants.CONTESTS_PAGE_SIZE, 1);
+            pagedContestsViewModel = AutoMapper.Mapper.Map<IEnumerable<ContestViewModel>>(pagedContests);
             return View("Index", pagedContestsViewModel);
         }
 

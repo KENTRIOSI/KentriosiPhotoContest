@@ -10,6 +10,7 @@ namespace KentriosiPhotoContest.Data.Migrations
     using KentriosiPhotosContests.Common;
     using Models;
     using Models.Enums;
+    using System.Collections.Generic;
 
     public sealed class Configuration : DbMigrationsConfiguration<KentriosiPhotoContext>
     {
@@ -77,13 +78,12 @@ namespace KentriosiPhotoContest.Data.Migrations
 
             var users = context.Users.ToList();
             var contests = context.Contests.ToList();
-            var contest = contests[this.randomGenerator.RandomNumber(1, contests.Count() - 1)];
             for (int i = 1; i < 100; i++)
             {
+                var contest = contests[this.randomGenerator.RandomNumber(1, contests.Count() - 1)];
                 var image = new Image()
                 {
                     Name = this.randomGenerator.RandomString(2, 100),
-                    Contest = contest,
                     AppertainingContest = contest,
                     Description = this.randomGenerator.RandomString(0, 500),
                     Owner = users[this.randomGenerator.RandomNumber(0, users.Count() - 1)],
@@ -92,6 +92,14 @@ namespace KentriosiPhotoContest.Data.Migrations
                     Extension = "jpg"
                 };
                 context.Images.AddOrUpdate(image);
+            }
+
+            context.SaveChanges();
+
+            var images = context.Images.ToList();
+            foreach (var contest in contests)
+            {
+                contest.ContestProfileImage = images[this.randomGenerator.RandomNumber(0, images.Count() - 1)];
             }
 
             context.SaveChanges();
@@ -122,6 +130,8 @@ namespace KentriosiPhotoContest.Data.Migrations
                 var status = (endDate < DateTime.Now || deadLineDate < DateTime.Now) ?
                     ContestStatus.Closed :
                     ContestStatus.Open;
+                var images = context.Images.ToList();
+                //var image = images[this.randomGenerator.RandomNumber(0, images.Count() - 1)];
 
                 var contest = new Contest()
                 {
@@ -137,6 +147,7 @@ namespace KentriosiPhotoContest.Data.Migrations
                     DateModified = previousDate,
                     EndDate = endDate,
                     DeadLineDate = deadLineDate,
+                    //ContestProfileImage = image,
                     Description = this.randomGenerator.RandomString(2, 500),
                     Title = this.randomGenerator.RandomString(2, 99),
                     StatusDescription = status == ContestStatus.Closed ? this.randomGenerator.RandomString(0, 250) : string.Empty,

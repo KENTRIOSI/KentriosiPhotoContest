@@ -11,14 +11,14 @@
 
     public class ContestViewModel : IMapFrom<Contest>, IHaveCustomMappings
     {
-        public int? ContestImageId { get; set; }
+        public int? ContestProfileImageId { get; set; }
 
         public string ContestImageUrl { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Contest, ContestViewModel>()
-                .ForMember(cvm => cvm.ContestImageUrl, opt => opt.MapFrom(c => c.ContestImage.Path))
+                .ForMember(cvm => cvm.ContestImageUrl, opt => opt.MapFrom(c => c.ContestProfileImage.Path))
                 .ReverseMap();
         }
     }

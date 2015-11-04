@@ -1,5 +1,8 @@
-﻿<div class="contests-container container well">
-    @Html.Partial("_Contests")
+﻿@using KentriosiPhotoContest.MVC.Models
+@model IEnumerable<ContestViewModel>
+
+<div class="contests-container container well">
+    @Html.Partial("_Contests", @Model)
     <div id="contests-loading"></div>
 </div>
 

@@ -20,7 +20,8 @@
                 .All()
                 .OrderBy(c => c.DateCreated)
                 .Skip(contestPageSize * page - 1)
-                .Take(contestPageSize);
+                .Take(contestPageSize).ToList();
+
             return pagedPublicContests;
         }
     }

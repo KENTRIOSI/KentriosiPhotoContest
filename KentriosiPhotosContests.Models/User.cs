@@ -1,4 +1,6 @@
-﻿namespace KentriosiPhotoContest.Models
+﻿using System;
+
+namespace KentriosiPhotoContest.Models
 {
     using System.Collections.Generic;
     using System.Security.Claims;
@@ -21,6 +23,8 @@
         private ICollection<Image> images;
         private ICollection<Prize> prizesWon;
         private ICollection<Comment> comments;
+
+        private DateTime registeredOn = DateTime.Now;
 
         public User()
         {
@@ -80,6 +84,12 @@
         {
             get { return this.comments; }
             set { this.comments = value; }
+        }
+
+        public DateTime RegisteredOn
+        {
+            get { return this.registeredOn; }
+            private set { this.registeredOn = value; }
         }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)

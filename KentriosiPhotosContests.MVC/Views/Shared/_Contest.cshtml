@@ -3,6 +3,6 @@
 
 <article>
     <h2>@Html.DisplayNameForModel()</h2>
-    <img src='@Url.Action("ById", "Images", new {id= @Model.ContestImageId })' alt="contest image" />
-
+    <p >@Url.Action("ById", "Images", new { id = @Model.ContestProfileImageId })</p>
+    <img src='@Url.Action("ById", "Images", new {id= @Model.ContestProfileImageId})' alt="contest image" />
 </article>
